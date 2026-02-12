@@ -1,23 +1,34 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import UserRepository from '@features/users/domain/repositories/user.repository';
 import SignInRequest from '../domain/types/sign-in-request.type';
 import { JwtService } from '@nestjs/jwt';
+import User from '@features/users/domain/entities/user.entity';
+import { SignInResponse } from '../domain/types/sign-in-response.type';
+import HashingService from '@shared/domain/ports/hashing.service';
 
 @Injectable()
 export default class AuthService {
   constructor(
     private readonly userRepository: UserRepository,
-    private jwtService: JwtService,
+    private readonly jwtService: JwtService,
+    private readonly hashingService: HashingService,
   ) {}
 
-  async signIn(data: SignInRequest): Promise<any> {
+  async signIn(data: SignInRequest): Promise<SignInResponse> {
+    const user: User | null = await this.userRepository.getByUsername(data.username);
+    if (!user) throw new UnauthorizedException('Invalid credentials');
+    const isPasswordValid: boolean = await this.hashingService.compare(data.password, user.passwordHash);
+
+    if (!isPasswordValid) 
+      throw new UnauthorizedException('Invalid credentials');
+
     const payload = {
-      sub: 1,
-      username: 'example',
-    };
+      sub: user.id,
+      username: user.username,
+    }
 
     return {
       accessToken: await this.jwtService.signAsync(payload),
-    };
+    }
   }
 }

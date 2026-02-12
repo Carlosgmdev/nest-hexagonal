@@ -5,5 +5,7 @@ export default class User {
   username: string;
   passwordHash: string;
 
-  constructor() {}
+  constructor(userProps: Partial<User>) {
+    Object.assign(this, userProps);
+  }
 }

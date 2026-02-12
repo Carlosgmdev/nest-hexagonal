@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import UserRepository from '../../domain/repositories/user.repository';
-import UserInMemoryRepository from '../repositories/user.in-memory.repository';
+import UserPostgreSQLRepository from '../adapters/user.postgresql.repository';
 
 @Module({
   imports: [],
@@ -8,7 +8,7 @@ import UserInMemoryRepository from '../repositories/user.in-memory.repository';
   providers: [
     {
       provide: UserRepository,
-      useClass: UserInMemoryRepository
+      useClass: UserPostgreSQLRepository
     }
   ],
   exports: [UserRepository]
