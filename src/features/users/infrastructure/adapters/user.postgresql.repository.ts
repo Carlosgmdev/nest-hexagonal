@@ -18,7 +18,9 @@ export default class UserPostgreSQLRepository implements UserRepository {
           name,
           last_name AS "lastName",
           username,
-          password_hash AS "passwordHash"
+          password_hash AS "passwordHash",
+          created_at AS "createdAt",
+          updated_at AS "updatedAt"
         FROM users
         WHERE username = ${username};
     `;

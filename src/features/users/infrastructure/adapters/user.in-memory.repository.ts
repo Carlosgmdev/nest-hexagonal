@@ -6,14 +6,14 @@ import User from '../../domain/entities/user.entity';
 export default class UserInMemoryRepository implements UserRepository {
   private users: User[] = [
     new User({
-      id: 1,
+      id: "asdf1234",
       name: 'John',
       lastName: 'Doe',
       username: 'johndoe',
       passwordHash: 'hashedpassword123',
     }),
     new User({
-      id: 2,
+      id: "qwer5678",
       name: 'Jane',
       lastName: 'Smith',
       username: 'janesmith',

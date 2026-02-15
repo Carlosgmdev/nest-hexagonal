@@ -1,11 +1,25 @@
 export default class User {
-  id: number;
+  id: string;
   name: string;
   lastName: string;
   username: string;
   passwordHash: string;
+  createdAt: Date;
+  updatedAt: Date;
 
   constructor(userProps: Partial<User>) {
-    Object.assign(this, userProps);
+    this.id = userProps.id || "";
+    this.name = userProps.name || "";
+    this.lastName = userProps.lastName || "";
+    this.username = userProps.username || "";
+    this.passwordHash = userProps.passwordHash || "";
+
+    this.createdAt = userProps.createdAt
+      ? new Date(userProps.createdAt)
+      : new Date();
+      
+    this.updatedAt = userProps.updatedAt
+      ? new Date(userProps.updatedAt)
+      : new Date();
   }
 }
