@@ -1,8 +1,9 @@
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
+import HashingService from "@shared/domain/ports/hashing.service";
 import argon2 from "argon2";
 
 @Injectable()
-export default class HashingArgon2Service {
+export default class HashingArgon2Service implements HashingService {
   async hash(value: string): Promise<string> {
     try {
       return await argon2.hash(value);
