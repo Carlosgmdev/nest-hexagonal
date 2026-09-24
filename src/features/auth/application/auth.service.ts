@@ -1,13 +1,13 @@
 import Email from '../../../shared/domain/vo/email.vo.js';
 import User from '../../users/domain/user.entity.js';
 import UserId from '../../users/domain/user-id.vo.js';
-import type UserRepository from '../../users/application/ports/user.repository.js';
+import type UserRepository from '../../users/application/ports/user-repository.port.js';
 import { UserEmailAlreadyExistsError } from '../../users/application/user.errors.js';
 import Password from '../domain/password.vo.js';
 import { InvalidCredentialsError, UserNotFoundError } from './auth.errors.js';
-import type AccessTokenIssuer from './ports/access-token-issuer.js';
-import type IdGenerator from './ports/id-generator.js';
-import type PasswordHasher from './ports/password-hasher.js';
+import type AccessTokenIssuer from './ports/access-token-issuer.port.js';
+import type IdGenerator from './ports/id-generator.port.js';
+import type PasswordHasher from './ports/password-hasher.port.js';
 
 export type RegisterUserCommand = {
   name: string;

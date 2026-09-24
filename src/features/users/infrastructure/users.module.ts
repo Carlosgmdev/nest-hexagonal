@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import InMemoryUsersRepository from './in-memory-users.repository.js';
+import InMemoryUsersRepository from './adapters/in-memory-user-repository.adapter.js';
 import { USER_REPOSITORY } from './users.tokens.js';
 
 @Module({

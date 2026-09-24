@@ -19,6 +19,16 @@ HTTP (controller, DTO, guard)
 
 Las capas `domain` y `application` no importan NestJS. `AuthModule` es el punto de composición: construye `AuthService` y `AuthGuard` mediante `useFactory` e inyecta sus puertos.
 
+Dentro de cada feature, `infrastructure/adapters` contiene las implementaciones de
+los puertos y `infrastructure/http` agrupa controladores, DTO, guards, filtros y
+decoradores relacionados con el transporte HTTP.
+
+Los nombres de archivo indican su función mediante un sufijo, por ejemplo
+`.controller.ts`, `.service.ts`, `.dto.ts`, `.vo.ts`, `.entity.ts`, `.port.ts`,
+`.adapter.ts`, `.guard.ts`, `.filter.ts`, `.decorator.ts`, `.module.ts` y
+`.type.ts`. Las subcarpetas más específicas, como `dto`, se crean cuando agrupan
+varios archivos relacionados.
+
 ## Configuración
 
 ```bash

@@ -1,8 +1,8 @@
-import type Email from '../../../shared/domain/vo/email.vo.js';
-import type UserRepository from '../application/ports/user.repository.js';
-import { UserEmailAlreadyExistsError } from '../application/user.errors.js';
-import type User from '../domain/user.entity.js';
-import type UserId from '../domain/user-id.vo.js';
+import type Email from '../../../../shared/domain/vo/email.vo.js';
+import type UserRepository from '../../application/ports/user-repository.port.js';
+import { UserEmailAlreadyExistsError } from '../../application/user.errors.js';
+import type User from '../../domain/user.entity.js';
+import type UserId from '../../domain/user-id.vo.js';
 
 export default class InMemoryUsersRepository implements UserRepository {
   private readonly users = new Map<string, User>();

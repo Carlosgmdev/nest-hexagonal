@@ -6,14 +6,15 @@ import {
   ExceptionFilter,
   UnauthorizedException,
 } from '@nestjs/common';
+
 import type { Response } from 'express';
-import DomainValidationError from '../../../shared/domain/errors/domain-validation.error.js';
-import { UserEmailAlreadyExistsError } from '../../users/application/user.errors.js';
+import DomainValidationError from '../../../../shared/domain/errors/domain-validation.error.js';
+import { UserEmailAlreadyExistsError } from '../../../users/application/user.errors.js';
 
 import {
   InvalidCredentialsError,
   UserNotFoundError,
-} from '../application/auth.errors.js';
+} from '../../application/auth.errors.js';
 
 @Catch(
   InvalidCredentialsError,

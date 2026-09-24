@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import type { Request } from 'express';
-import type AccessTokenVerifier from '../application/ports/access-token-verifier.js';
+import type AccessTokenVerifier from '../../application/ports/access-token-verifier.port.js';
 import { IS_PUBLIC_KEY } from './public.decorator.js';
 
 export default class AuthGuard implements CanActivate {

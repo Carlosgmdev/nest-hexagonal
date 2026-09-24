@@ -8,10 +8,10 @@ import {
   UseFilters,
 } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
-import AuthService from '../application/auth.service.js';
-import type { UserProfile } from '../application/auth.service.js';
+import AuthService from '../../application/auth.service.js';
+import type { UserProfile } from '../../application/auth.service.js';
 import AuthExceptionFilter from './auth-exception.filter.js';
-import type { AuthenticatedUser } from './authenticated-user.js';
+import type { AuthenticatedUser } from './authenticated-user.type.js';
 import { CurrentUser } from './current-user.decorator.js';
 import LoginDto from './dto/login.dto.js';
 import RegisterUserDto from './dto/register-user.dto.js';

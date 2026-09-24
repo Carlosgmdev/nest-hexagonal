@@ -1,9 +1,9 @@
 import { JwtService } from '@nestjs/jwt';
-import type AccessTokenIssuer from '../application/ports/access-token-issuer.js';
-import type { AccessTokenClaims } from '../application/ports/access-token-issuer.js';
-import type AccessTokenVerifier from '../application/ports/access-token-verifier.js';
+import type AccessTokenIssuer from '../../application/ports/access-token-issuer.port.js';
+import type { AccessTokenClaims } from '../../application/ports/access-token-issuer.port.js';
+import type AccessTokenVerifier from '../../application/ports/access-token-verifier.port.js';
 
-export default class JwtAccessTokenService
+export default class JwtAccessTokenAdapter
   implements AccessTokenIssuer, AccessTokenVerifier
 {
   constructor(private readonly jwtService: JwtService) {}
